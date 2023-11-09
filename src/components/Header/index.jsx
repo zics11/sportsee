@@ -6,9 +6,9 @@ function Header() {
       <nav className="  text-white flex items-center  justify-between w-full  mr-24 ml-7  text-2xl font-medium">
         <img src={Logo} alt="Logo Sportsee" className=" w-44" />
         <span>Acceuil</span>
-        <span>Accueil</span>
-        <span>Accueil</span>
-        <span>Accueil</span>
+        <span>Profil</span>
+        <span>Réglage</span>
+        <span>Communauté</span>
       </nav>
     </header>
   )

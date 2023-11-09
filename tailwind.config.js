@@ -6,6 +6,9 @@ module.exports = {
       colors: {
         'noir-header': '#020203',
       },
+      fontFamily: {
+        sans: ['Roboto', 'ui-sans-serif', 'system-ui'],
+      },
     },
   },
   plugins: [],
