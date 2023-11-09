@@ -54,7 +54,7 @@ function Home() {
   return (
     <section className="  h-full flex flex-row">
       <VerticalMenu />
-      ID de l'utilisateur : {data?.getKeyData()?.calorieCount}
+      Bonjour {data?.getFirstName()}
       ID de l'utilisateur : {data?.getKeyData()?.proteinCount}
 
     </section>

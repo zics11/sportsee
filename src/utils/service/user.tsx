@@ -91,4 +91,75 @@ export class User {
     }
     return sessions
   }
+
+  getTrainingData() {
+    const dayOfWeek: Record<number, string> = {
+      1: 'L',
+      2: 'M',
+      3: 'M',
+      4: 'J',
+      5: 'V',
+      6: 'S',
+      7: 'D',
+    }
+    let sessions = []
+    for (let session of this.sessionsData.sessions) {
+      sessions.push({
+        day: dayOfWeek[session.day],
+        sessionLength: session.sessionLength,
+      })
+    }
+    return sessions
+  }
+
+  getPerformanceData() {
+    const kind = this.performanceData.kind
+    for (const value in kind) {
+      switch (kind[value]) {
+        case 'cardio':
+          kind[value] = 'Cardio'
+          break
+        case 'energy':
+          kind[value] = 'Energie'
+          break
+        case 'endurance':
+          kind[value] = 'Endurance'
+          break
+        case 'strength':
+          kind[value] = 'Force'
+          break
+        case 'speed':
+          kind[value] = 'Vitesse'
+          break
+        case 'intensity':
+          kind[value] = 'Intensité'
+          break
+        default:
+          console.log(`Sorry, we are out of data.`)
+      }
+    }
+    let performances = []
+    for (let performance of this.performanceData.data) {
+      performances.push({
+        value: performance.value,
+        kind: kind[performance.kind],
+      })
+    }
+    return performances
+  }
+
+  getScore() {
+    const score = this.mainData.todayScore ?? this.mainData.score ?? 0
+    const scoreData = [
+      {
+        name: 'score',
+        value: score,
+      },
+      {
+        name: 'empty',
+        value: 1 - score,
+      },
+    ]
+    return scoreData
+  }
 }
