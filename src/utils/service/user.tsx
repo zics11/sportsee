@@ -84,7 +84,7 @@ export class User {
     let sessions = []
     for (let session of this.activityData.sessions) {
       sessions.push({
-        day: new Date(session.day).getDate(),
+        day: new Date(session.day).getDate().toString(),
         kilogram: session.kilogram,
         calories: session.calories,
       })

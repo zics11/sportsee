@@ -3,11 +3,13 @@ import { useFetch } from '../../utils/hooks/fetch'
 import { User } from '../../utils/service/user'
 import VerticalMenu from '../../components/VerticalMenu'
 import { useParams } from 'react-router-dom'
+import ActiviteQuotidienne from '../../components/Charts/ActiviteQuotidienne'
+import Sessions from '../../components/Charts/Sessions'
 
 function Home() {
   const [data, setData] = useState<User | null>(null)
-  const { id: stringId } = useParams();
-  const id = Number(stringId) || 0;
+  const { id: stringId } = useParams()
+  const id = Number(stringId) || 0
   console.log(id)
 
   const {
@@ -54,9 +56,23 @@ function Home() {
   return (
     <section className="  h-full flex flex-row">
       <VerticalMenu />
-      Bonjour {data?.getFirstName()}
-      ID de l'utilisateur : {data?.getKeyData()?.proteinCount}
-
+      <div className=" flex flex-col m-24  ">
+        <div className=" text-5xl font-medium mb-20">
+          Bonjour{' '}
+          <span className=" text-red-SportSee">{data?.getFirstName()}</span>
+          <p className=" text-lg font-normal mt-10">
+            Félicitation ! Vous avez explosé vos objectifs hier 👏
+          </p>
+        </div>
+        <div>
+          <div className=' flex flex-col gap-7'>
+            <ActiviteQuotidienne data={data?.getActivityData() ?? []} />
+            <div>
+              <Sessions data={data?.getTrainingData() ?? []} />
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   )
 }
