@@ -64,8 +64,13 @@ export class User {
     this.performanceData = performanceData
   }
 
-  getFirstName() {
-    return this.mainData.userInfos.firstName
+  getUserInfo() {
+    return {
+      id: this.mainData.id,
+      firstName: this.mainData.userInfos.firstName,
+      lastName: this.mainData.userInfos.lastName,
+      age: this.mainData.userInfos.age,
+    }
   }
 
   getKeyData() {

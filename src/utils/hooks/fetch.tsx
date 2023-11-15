@@ -6,10 +6,11 @@ import {
 } from '../../data/mock-data'
 import { useState, useEffect } from 'react'
 
-export function useFetch(url: string, mock: string, userId: number) {
+export function useFetch(url: string, userId: number) {
   const [data, setData] = useState<any | undefined>(undefined);
   const [isLoading, setLoading] = useState(true)
   const [error, setError] = useState<Error | null>(null)
+  const mock: boolean = false
 
   useEffect(() => {
     const urlId = url.replace('${userId}', userId.toString())
@@ -30,13 +31,13 @@ export function useFetch(url: string, mock: string, userId: number) {
 
     function getMockData(type: string) {
       switch (type) {
-        case 'main':
+        case 'http://localhost:3000/user/${userId}':
           return USER_MAIN_DATA.find((data) => data.id === userId)
-        case 'activity':
+        case 'http://localhost:3000/user/${userId}/activity':
           return USER_ACTIVITY.find((data) => data.userId === userId)
-        case 'average_sessions':
+        case 'http://localhost:3000/user/${userId}/average-sessions':
           return USER_AVERAGE_SESSIONS.find((data) => data.userId === userId)
-        case 'performance':
+        case 'http://localhost:3000/user/${userId}/performance':
           return USER_PERFORMANCE.find((data) => data.userId === userId)
         default:
           return null
@@ -46,7 +47,7 @@ export function useFetch(url: string, mock: string, userId: number) {
     if (!mock) {
       fetchData()
     } else {
-      const mockData = getMockData(mock)
+      const mockData = getMockData(url)
       setData(mockData)
       setLoading(false)
     }
