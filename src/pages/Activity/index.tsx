@@ -9,21 +9,25 @@ function Activity() {
   const id = Number(stringId) || 0
   console.log(id)
 
-  const {
-    data: mainData,
-  } = useFetch('http://localhost:3000/user/${userId}', id)
+  const { data: mainData } = useFetch(
+    'http://localhost:3000/user/${userId}',
+    id
+  )
 
-  const {
-    data: activityData
-  } = useFetch('http://localhost:3000/user/${userId}/activity', id)
+  const { data: activityData } = useFetch(
+    'http://localhost:3000/user/${userId}/activity',
+    id
+  )
 
-  const {
-    data: sessionsData, 
-  } = useFetch('http://localhost:3000/user/${userId}/average-sessions', id)
+  const { data: sessionsData } = useFetch(
+    'http://localhost:3000/user/${userId}/average-sessions',
+    id
+  )
 
-  const {
-    data: performanceData,
-  } = useFetch('http://localhost:3000/user/${userId}/performance', id)
+  const { data: performanceData } = useFetch(
+    'http://localhost:3000/user/${userId}/performance',
+    id
+  )
 
   useEffect(() => {
     if (mainData && activityData && sessionsData && performanceData) {
@@ -39,6 +43,8 @@ function Activity() {
 
   return (
     <div className="  m-11">
+      <h2 className=" text-2xl">Activité quotidienne :</h2>
+      <br />
       {data?.getActivityData()?.map((session, index) => (
         <div key={index}>
           <p>Day: {session.day}</p>
@@ -47,6 +53,14 @@ function Activity() {
           <br />
         </div>
       ))}
+      <h2 className=" text-2xl">Chiffres clés :</h2>
+      <br />
+      <p>calorie Count : {data?.getKeyData().calorieCount}</p>
+      <p>carbohydrate Count : {data?.getKeyData().carbohydrateCount}</p>
+      <p>lipid Count : {data?.getKeyData().lipidCount}</p>
+      <p>protein Count : {data?.getKeyData().proteinCount}</p>
+      <br />
+
     </div>
   )
 }
