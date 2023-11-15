@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import UserInfo from './pages/UserInfo'
 import Activity from './pages/Activity'
 import AverageSessions from './pages/AverageSessions'
+import Performance from './pages/Performance'
 
 
 import Header from './components/Header'
@@ -21,6 +22,7 @@ root.render(
           <Route path="/user/:id" element={<UserInfo />}></Route>
           <Route path="/user/:id/activity" element={<Activity />}></Route>
           <Route path="/user/:id/average-sessions" element={<AverageSessions />}></Route>
+          <Route path="/user/:id/performance" element={<Performance />}></Route>
 
         </Routes>
       </Router>
