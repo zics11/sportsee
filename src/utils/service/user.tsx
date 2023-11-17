@@ -78,9 +78,9 @@ export class User {
       calorieCount: new Intl.NumberFormat('en-US').format(
         this.mainData.keyData.calorieCount
       ),
-      proteinCount: this.mainData.keyData.proteinCount,
-      carbohydrateCount: this.mainData.keyData.carbohydrateCount,
-      lipidCount: this.mainData.keyData.lipidCount,
+      proteinCount: this.mainData.keyData.proteinCount.toString(),
+      carbohydrateCount: this.mainData.keyData.carbohydrateCount.toString(),
+      lipidCount: this.mainData.keyData.lipidCount.toString(),
     }
     return keyData
   }
