@@ -5,6 +5,8 @@ import VerticalMenu from '../../components/VerticalMenu'
 import { useParams } from 'react-router-dom'
 import ActiviteQuotidienne from '../../components/Charts/ActiviteQuotidienne'
 import Sessions from '../../components/Charts/Sessions'
+import Performance from '../../components/Charts/Performance'
+
 
 function Home() {
   const [data, setData] = useState<User | null>(null)
@@ -63,8 +65,10 @@ function Home() {
         <div>
           <div className=" flex flex-col gap-7">
             <ActiviteQuotidienne data={data?.getActivityData() ?? []} />
-            <div>
+            <div className=' flex gap-8'>
               <Sessions data={data?.getTrainingData() ?? []} />
+              <Performance data={data?.getPerformanceData() ?? []} />
+
             </div>
           </div>
         </div>

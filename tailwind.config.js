@@ -7,6 +7,8 @@ module.exports = {
         'noir-header': '#020203',
         'gris-chart': '#FBFBFB',
         'gris-text': '#74798C',
+        'gris-chart-fonce': '#282D30',
+
 
         'red-SportSee' :  '#FF0101',
       },
