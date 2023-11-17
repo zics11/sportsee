@@ -18,7 +18,7 @@ root.render(
       <Router>
         <Header />
         <Routes>
-          <Route path="/home/user/:id" element={<Home />}></Route>
+          <Route path="/user/:id/home" element={<Home />}></Route>
           <Route path="/user/:id" element={<UserInfo />}></Route>
           <Route path="/user/:id/activity" element={<Activity />}></Route>
           <Route path="/user/:id/average-sessions" element={<AverageSessions />}></Route>

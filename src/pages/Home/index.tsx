@@ -6,6 +6,8 @@ import { useParams } from 'react-router-dom'
 import ActiviteQuotidienne from '../../components/Charts/ActiviteQuotidienne'
 import Sessions from '../../components/Charts/Sessions'
 import Performance from '../../components/Charts/Performance'
+import Score from '../../components/Charts/Score'
+
 
 
 function Home() {
@@ -54,7 +56,7 @@ function Home() {
   return (
     <section className="  h-full flex flex-row">
       <VerticalMenu />
-      <div className=" flex flex-col m-24  ">
+      <div className=" flex flex-col m-24 w-full ">
         <div className=" text-5xl font-medium mb-20">
           Bonjour{' '}
           <span className="text-red-SportSee">{data?.getUserInfo()?.firstName}</span>
@@ -63,14 +65,15 @@ function Home() {
           </p>
         </div>
         <div>
-          <div className=" flex flex-col gap-7">
+          <div className=" flex flex-col gap-7 w-3/4">
             <ActiviteQuotidienne data={data?.getActivityData() ?? []} />
-            <div className=' flex gap-8'>
+            <div className=' flex space-x-7'>
               <Sessions data={data?.getTrainingData() ?? []} />
               <Performance data={data?.getPerformanceData() ?? []} />
-
+              <Score data={data?.getScore() ?? []} />
             </div>
           </div>
+          <div>AAAA</div>
         </div>
       </div>
     </section>

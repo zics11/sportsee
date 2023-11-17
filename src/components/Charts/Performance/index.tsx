@@ -18,7 +18,7 @@ interface PerformanceProps {
 
 export default function Performance({ data }: PerformanceProps) {
   return (
-    <div className=" bg-gris-chart-fonce rounded-md w-1/3 relative ">
+    <div className=" bg-gris-chart-fonce rounded-md w-1/3 relative mb ">
       <ResponsiveContainer width="100%" height={263}>
       <RadarChart data={data} margin={{ top: 0, right: 20, bottom: 0, left: 20 }} startAngle={-510} endAngle={-150}>
         <PolarGrid radialLines={false} />
