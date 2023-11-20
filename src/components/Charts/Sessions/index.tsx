@@ -20,11 +20,11 @@ interface SessionsProps {
 
 export default function Sessions({ data }: SessionsProps) {
   return (
-    <div className="  bg-red-SportSee rounded-md w-1/3 relative ">
-      <div className=" text-base font-medium mb-8 flex justify-between w-36 absolute top-7 left-8 text-[#ffffff7f]">
+    <div className="  bg-red-SportSee rounded-md w-1/3 relative h-5/6">
+      <div className=" text-base font-medium mb-8 flex justify-between w-3/4 absolute top-3 left-4 text-[#ffffff7f]">
         Durée moyenne des sessions
       </div>
-      <ResponsiveContainer width="100%" height={263}>
+      <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={data}
           margin={{ top: 0, right: 10, left: 10, bottom: 0 }}

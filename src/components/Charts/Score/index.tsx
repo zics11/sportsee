@@ -11,8 +11,8 @@ interface ScoreProps {
 
 export default function Score({ data }: ScoreProps) {
   return (
-    <div className="  bg-gris-chart rounded-md w-1/3 relative ">
-      <h2 className=" text-base font-medium mb-8 flex justify-between w-36 absolute top-7 left-8 text-noir-header">
+    <div className="  bg-gris-chart rounded-md w-1/3 relative h-5/6">
+      <h2 className=" text-base font-medium mb-8 flex justify-between w-36 absolute top-3 left-4 text-noir-header">
         Score
       </h2>
       <div className=' absolute flex justify-center items-center w-full h-full'>
@@ -22,10 +22,10 @@ export default function Score({ data }: ScoreProps) {
           de votre <br /> obectif
         </p>
       </div>
-      <ResponsiveContainer width="100%" height={263}>
+      <ResponsiveContainer width="100%" height="100%">
         <PieChart
           margin={{
-            top: 20,
+            top: 50,
             right: 0,
             left: 0,
             bottom: 0,

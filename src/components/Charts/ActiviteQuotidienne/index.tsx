@@ -23,7 +23,7 @@ export default function ActiviteQuotidienne({
   data,
 }: ActiviteQuotidienneProps) {
   return (
-    <div className=" bg-gris-chart p-7 rounded-md w-full">
+    <div className=" bg-gris-chart p-7 rounded-md w-full h-1/2">
       <div className=" text-base font-medium mb-8 flex justify-between w-full">
         Activité quotidienne
         <div className=" text-gris-text flex gap-8">
@@ -37,7 +37,7 @@ export default function ActiviteQuotidienne({
           </div>
         </div>
       </div>
-      <ResponsiveContainer width="100%" height={208}>
+      <ResponsiveContainer width="100%" height="80%">
         <BarChart data={data}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
           <XAxis

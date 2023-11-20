@@ -14,7 +14,7 @@ import Header from './components/Header'
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
-    <div className="h-screen  min-h-[780px] min-w-[1024px]">
+    <div className="h-screen  min-h-[780px] min-w-[1024px] w-full">
       <Router>
         <Header />
         <Routes>

@@ -23,7 +23,7 @@ export function CardInfos({ type, value }: CardInfosProps) {
   }
 
   return (
-    <div className=" w-full bg-gris-chart p-8 flex space-x-8">
+    <div className=" w-full h-32  bg-gris-chart flex items-center justify-evenly ">
       <img src={imgMap[type]} alt={`${type} icon`} className=" h-14" />
       <p className=" flex flex-col justify-center text-sm text-gris-text">
         <strong className="text-xl text-noir-header">
