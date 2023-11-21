@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './utils/style/index.css'
 import Home from './pages/Home'
+import Acceuil from './pages/Acceuil'
 import UserInfo from './pages/UserInfo'
 import Activity from './pages/Activity'
 import AverageSessions from './pages/AverageSessions'
@@ -23,6 +24,7 @@ root.render(
           <Route path="/user/:id/activity" element={<Activity />}></Route>
           <Route path="/user/:id/average-sessions" element={<AverageSessions />}></Route>
           <Route path="/user/:id/performance" element={<Performance />}></Route>
+          <Route path="/acceuil" element={<Acceuil />}></Route>
 
         </Routes>
       </Router>
