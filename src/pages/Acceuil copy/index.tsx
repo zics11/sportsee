@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { NavLink } from 'react-router-dom'
+import { ReactComponentElement } from 'react'
 
 function Acceuil() {
   return (

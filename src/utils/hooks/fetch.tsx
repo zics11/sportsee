@@ -7,7 +7,7 @@ import {
 import { useState, useEffect } from 'react'
 
 export function useFetch(url: string, userId: number) {
-  const [data, setData] = useState<any | undefined>(undefined);
+  const [data, setData] = useState<any | undefined>(undefined)
   const [isLoading, setLoading] = useState(true)
   const [error, setError] = useState<Error | null>(null)
   const mock: boolean = false
@@ -19,10 +19,13 @@ export function useFetch(url: string, userId: number) {
     async function fetchData() {
       try {
         const response = await fetch(urlId)
+        if (!response.ok) {
+          throw new Error(`API call failed with status: ${response.status}`)
+        }
         const json = await response.json()
         setData(json.data)
       } catch (err: any) {
-        console.error(err)
+        console.error(err);
         setError(err)
       } finally {
         setLoading(false)

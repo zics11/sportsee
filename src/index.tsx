@@ -8,6 +8,8 @@ import UserInfo from './pages/UserInfo'
 import Activity from './pages/Activity'
 import AverageSessions from './pages/AverageSessions'
 import Performance from './pages/Performance'
+import Error from './pages/Error'
+
 
 
 import Header from './components/Header'
@@ -25,6 +27,7 @@ root.render(
           <Route path="/user/:id/average-sessions" element={<AverageSessions />}></Route>
           <Route path="/user/:id/performance" element={<Performance />}></Route>
           <Route path="/acceuil" element={<Acceuil />}></Route>
+          <Route path="*" element={<Error />}></Route>
 
         </Routes>
       </Router>

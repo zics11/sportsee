@@ -1,8 +1,9 @@
+/* eslint-disable no-template-curly-in-string */
 import { useState, useEffect } from 'react'
 import { useFetch } from '../../utils/hooks/fetch'
 import { User } from '../../utils/service/user'
 import VerticalMenu from '../../components/VerticalMenu'
-import { useParams } from 'react-router-dom'
+import { useParams, Navigate } from 'react-router-dom'
 import ActiviteQuotidienne from '../../components/Charts/ActiviteQuotidienne'
 import Sessions from '../../components/Charts/Sessions'
 import Performance from '../../components/Charts/Performance'
@@ -13,35 +14,40 @@ function Home() {
   const [data, setData] = useState<User | null>(null)
   const { id: stringId } = useParams()
   const id = Number(stringId) || 0
-  console.log(id)
+  const [apiError, setApiError] = useState(false)
 
-  const {
-    data: mainData,
-    isLoading: isMainLoading,
-    error: mainError,
-  } = useFetch('http://localhost:3000/user/${userId}', id)
+  const { data: mainData, error: mainError } = useFetch(
+    'http://localhost:3000/user/${userId}',
+    id
+  )
 
-  const {
-    data: activityData,
-    isLoading: isActivityLoading,
-    error: activityError,
-  } = useFetch('http://localhost:3000/user/${userId}/activity', id)
+  const { data: activityData, error: activityError } = useFetch(
+    'http://localhost:3000/user/${userId}/activity',
+    id
+  )
 
-  const {
-    data: sessionsData,
-    isLoading: isSessionsLoading,
-    error: sessionsError,
-  } = useFetch('http://localhost:3000/user/${userId}/average-sessions', id)
+  const { data: sessionsData, error: sessionsError } = useFetch(
+    'http://localhost:3000/user/${userId}/average-sessions',
+    id
+  )
 
-  const {
-    data: performanceData,
-    isLoading: isPerformanceLoading,
-    error: performanceError,
-  } = useFetch('http://localhost:3000/user/${userId}/performance', id)
+  const { data: performanceData, error: performanceError } = useFetch(
+    'http://localhost:3000/user/${userId}/performance',
+    id
+  )
+
+  useEffect(() => {
+    if (mainError || activityError || sessionsError || performanceError) {
+      setApiError(true)
+    }
+  }, [mainError, activityError, sessionsError, performanceError])
 
   useEffect(() => {
     // Assurez-vous que toutes les données sont chargées avant de créer l'instance de User
-    if (mainData && activityData && sessionsData && performanceData) {
+    const allDataLoaded =
+      mainData && activityData && sessionsData && performanceData
+
+    if (allDataLoaded) {
       const newUser = new User(
         mainData,
         activityData,
@@ -51,6 +57,10 @@ function Home() {
       setData(newUser)
     }
   }, [mainData, activityData, sessionsData, performanceData])
+
+  if (apiError) {
+    return <Navigate to="/error" />
+  }
 
   return (
     <section className=" h-screen flex flex-row w-full -mt-24">

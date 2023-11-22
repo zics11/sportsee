@@ -1,33 +1,41 @@
+/* eslint-disable no-template-curly-in-string */
 import { useState, useEffect } from 'react'
 import { useFetch } from '../../utils/hooks/fetch'
 import { User } from '../../utils/service/user'
-import { useParams } from 'react-router-dom'
+import { useParams, Navigate } from 'react-router-dom'
 
 function Performance() {
   const [data, setData] = useState<User | null>(null)
   const { id: stringId } = useParams()
   const id = Number(stringId) || 0
-  console.log(id)
 
-  const { data: mainData } = useFetch(
+  const [apiError, setApiError] = useState(false)
+
+  const { data: mainData, error: mainError } = useFetch(
     'http://localhost:3000/user/${userId}',
     id
   )
 
-  const { data: activityData } = useFetch(
+  const { data: activityData, error: activityError } = useFetch(
     'http://localhost:3000/user/${userId}/activity',
     id
   )
 
-  const { data: sessionsData } = useFetch(
+  const { data: sessionsData, error: sessionsError } = useFetch(
     'http://localhost:3000/user/${userId}/average-sessions',
     id
   )
 
-  const { data: performanceData } = useFetch(
+  const { data: performanceData, error: performanceError } = useFetch(
     'http://localhost:3000/user/${userId}/performance',
     id
   )
+
+  useEffect(() => {
+    if (mainError || activityError || sessionsError || performanceError) {
+      setApiError(true)
+    }
+  }, [mainError, activityError, sessionsError, performanceError])
 
   useEffect(() => {
     if (mainData && activityData && sessionsData && performanceData) {
@@ -40,6 +48,10 @@ function Performance() {
       setData(newUser)
     }
   }, [mainData, activityData, sessionsData, performanceData])
+
+  if (apiError) {
+    return <Navigate to="/error" />
+  }
 
   return (
     <div className="  m-11">

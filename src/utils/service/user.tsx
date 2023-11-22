@@ -140,7 +140,7 @@ export class User {
           kind[value] = 'Intensité'
           break
         default:
-          console.log(`Sorry, we are out of data.`)
+
       }
     }
     let performances = []
