@@ -153,6 +153,8 @@ export class User {
     return performances
   }
 
+
+
   getScore() {
     const score = this.mainData.todayScore ?? this.mainData.score ?? 0
     const scoreData = [
